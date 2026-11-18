@@ -1,0 +1,380 @@
+:root {
+  color-scheme: light;
+  --ink: #141414;
+  --paper: #f3efe6;
+  --card: #fffdf8;
+  --line: #141414;
+  --focus: #0b3a82;
+  --live: #0b3d1e;
+  --wip: #6b4a00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "PingFang TC", "Hiragino Sans CNS", "Noto Sans CJK TC", "Noto Sans TC", "Source Han Sans TC", "Microsoft JhengHei", "微軟正黑體", "WenQuanYi Micro Hei", "文泉驛微米黑", "Droid Sans Fallback", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+.site-header,
+#main,
+.site-footer {
+  width: min(72rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.site-header {
+  padding: 2.25rem 0 1.25rem;
+  border-bottom: 3px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.lede {
+  max-width: 46rem;
+  margin: 0.9rem 0 0;
+  font-size: 1.25rem;
+}
+
+.count {
+  margin: 1rem 0 0;
+  font-weight: 700;
+}
+
+#main {
+  padding: 1.5rem 0 2.5rem;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 100%;
+  padding: 1.25rem 1.25rem 1.15rem;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-left-width: 8px;
+}
+
+.card.is-live {
+  border-left-color: var(--live);
+}
+
+.card.is-wip {
+  border-left-style: double;
+  border-left-color: var(--wip);
+}
+
+.card.is-pending {
+  border-left-style: dashed;
+}
+
+.card.has-site {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .card.has-site:hover {
+    outline: 2px solid var(--line);
+    outline-offset: 3px;
+  }
+
+  .action-open:hover {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  .action-source:hover {
+    background: var(--ink);
+    color: #fff;
+  }
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+}
+
+.status {
+  margin: 0;
+  padding: 0.15rem 0.55rem;
+  border: 2px solid var(--line);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.card.is-live .status {
+  border-color: var(--live);
+}
+
+.card.is-wip .status {
+  border-style: double;
+  border-color: var(--wip);
+}
+
+.card.is-pending .status {
+  border-style: dashed;
+}
+
+.card-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  line-height: 1.35;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.card-title a {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.16em;
+}
+
+.card.has-site .card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.summary {
+  margin: 0;
+  font-size: 1.15rem;
+  text-wrap: pretty;
+}
+
+.version {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.35rem;
+}
+
+.action {
+  flex: 1 1 8.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.65rem 0.9rem;
+  border: 2px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+}
+
+.action-open {
+  background: var(--ink);
+  color: #fff;
+}
+
+.action.is-disabled {
+  background: transparent;
+  color: var(--ink);
+  border-style: dashed;
+  font-weight: 700;
+  cursor: default;
+}
+
+a:focus-visible,
+.card:has(.card-title a:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+@media (forced-colors: active) {
+  .action-open,
+  .action-source,
+  .status {
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+  }
+}
+
+.action:focus-visible {
+  outline-offset: 2px;
+}
+
+.catalog-error {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border: 2px dashed var(--line);
+  background: #fff;
+  font-size: 1.05rem;
+}
+
+.catalog-error ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.3rem;
+}
+
+.site-footer {
+  padding: 0 0 2.5rem;
+  border-top: 2px solid var(--line);
+  padding-top: 1rem;
+}
+
+.site-footer p {
+  margin: 0.35rem 0;
+}
+
+.site-footer a {
+  color: inherit;
+  font-weight: 700;
+}
+
+code {
+  font-family: "Sarasa Mono TC", "Noto Sans Mono CJK TC", "WenQuanYi Micro Hei Mono", ui-monospace, monospace;
+  font-size: 0.95em;
+}
+
+@media (max-width: 40rem) {
+  body {
+    font-size: 1.1rem;
+  }
+
+  .site-header,
+  #main,
+  .site-footer {
+    width: min(72rem, calc(100% - 1.5rem));
+  }
+
+  .lede {
+    font-size: 1.15rem;
+  }
+
+  .action {
+    flex-basis: 100%;
+  }
+}
+
+@media print {
+  @page {
+    margin: 1.2cm;
+  }
+
+  html,
+  body,
+  .card,
+  .action,
+  .status,
+  .catalog-error {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  .site-header,
+  #main,
+  .site-footer {
+    width: auto;
+  }
+
+  .catalog {
+    display: block;
+  }
+
+  .card {
+    break-inside: avoid;
+    margin-top: 0.8rem;
+    border: 1.5pt solid #000 !important;
+    border-left-width: 6pt !important;
+  }
+
+  .actions {
+    display: block;
+  }
+
+  .action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    margin-top: 0.45rem;
+    text-align: left;
+  }
+
+  .card.is-wip {
+    border-left-style: double !important;
+  }
+
+  .card.is-pending {
+    border-left-style: dashed !important;
+  }
+
+  .card.is-pending .status,
+  .action.is-disabled {
+    border-style: dashed !important;
+  }
+
+  .status,
+  .action {
+    border: 1.5pt solid #000 !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  .card.has-site .card-title a::after {
+    content: none;
+  }
+
+  .action[href]::after {
+    content: attr(href);
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 10pt;
+    font-weight: 400;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+}
