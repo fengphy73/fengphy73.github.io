@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Phy 老師的高中物理教具入口。從卡片開啟各項參數設計器，或查看原始碼。">
+  <title>Phy 老師教具入口</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">台灣高中物理</p>
+    <h1>Phy 老師教具入口</h1>
+    <p class="lede">這裡集中課堂用的參數設計器。每張卡片是一個獨立網站：點卡片或「開啟網站」就能調整參數、預覽，並輸出 STL 或 SVG。要改程式，點「原始碼」。</p>
+    <p class="count" id="tool-count">讀取教具清單…</p>
+  </header>
+
+  <main id="main">
+    <noscript>
+      <p class="catalog-error">這個頁面要用 JavaScript 讀取 projects.js。請開啟 JavaScript 後重新整理。</p>
+    </noscript>
+    <div id="catalog-error" class="catalog-error" role="alert" hidden></div>
+    <section id="catalog" class="catalog" aria-label="教具列表"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>新增教具只改 <code>projects.js</code> 裡的一筆資料。步驟寫在 README。</p>
+    <p>上線網址 <a href="https://fengphy73.github.io/">https://fengphy73.github.io/</a></p>
+  </footer>
+
+  <script src="projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
