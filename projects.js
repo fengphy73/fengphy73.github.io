@@ -33,10 +33,11 @@ window.TEACHING_PROJECTS = [
   },
   {
     name: "狹縫干涉繞射實驗紀錄",
-    summary: "課堂實驗紀錄網站（試用）。學生填量測、核對波長；另有老師設定頁可產生專屬學生連結。",
+    summary: "課堂實驗紀錄網站（試用）。學生填量測、核對波長；老師可從「教師入口」設定並產生專屬學生連結。",
     version: "",
     status: "試用",
     url: "https://fengphy73.github.io/slit-lab-log/",
+    teacher: "https://fengphy73.github.io/slit-lab-log/teacher.html",
     source: "https://github.com/fengphy73/slit-lab-log"
   },
   {

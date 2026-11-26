@@ -129,6 +129,8 @@
     } else {
       addPlaceholder(actions, "action action-open", "網址待補");
     }
+    var teacherUrl = linkField(project, "teacher");
+    if (teacherUrl) addLink(actions, "action action-open", teacherUrl, "教師入口");
     if (sourceUrl) {
       addLink(actions, "action action-source", sourceUrl, "原始碼");
     } else {
